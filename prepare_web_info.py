@@ -171,32 +171,3 @@ def get_vac_info(where_to_find=0, what_skills=0,sal_min=0):
 
     return vac_dict_lst
 
-
-
-
-
-
-
-    #
-    # # *******  Завершение работы с таблицами   *******
-    # #    commit the changes to db
-    # conn.commit()
-    # #    close the connection
-    # conn.close()
-    #
-    #
-    # return vac_dict_lst
-
-
-
-
-if __name__ == '__main__':
-
-    print(get_vac_info(where_to_find=1, what_skills=1, sal_min=100000)[0])
-
-    # print('всего вакансий', len(v_lst))
-    # print(v_lst[0])
-
-
-
-
