@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>РЕЗУЛЬТАТ из HH</title>
+  </head>
+
+  <body background="/static/sand.jpg">
+
+  <!--верхнее меню навигации-->
+  <ul class="nav nav-pills">
+      <a class="nav-link" href="/">выбор</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active" href="/results/">Результаты</a>
+    </li>
+  </ul>
+
+  <p></p>
+  <h3>РЕЗУЛЬТАТ ВЫБОРКИ <br>из запроса к базе вакансий<br>
+        <a href="https://hh.ru">head hunter</a></h3>
+
+  <hr align="center" color="#fff" size="3" />
+
+  {% if rf %}
+      <h5>Выборка из найденных вакансий</h5>
+      <h4>Регион поиска: {{rf.where_to_find}}</h4>
+      <h4>Минимальная заработная плата: {{rf.sal_min}} рублей</h4>
+      <h4>Ключевое слово запроса: {{rf.what_skills}}</h4>
+  {% endif %}
+
+  <hr class="border border-primary border-3 opacity-75">
+
+
+  {% if vl %}
+      {% for vac in vl %}
+      <h3> {{vac.name}} </h3>
+       <p> регион: {{vac.reg}}, населенный пункт: {{vac.town}} <br>
+       заработная плата: от {{vac.s_from}} до: {{vac.s_to}} рублей<br>
+       ключевые требования:{{vac.skill}} <br>
+       <a href="{{vac.alternate_url}}" target="_blank"> вакансия {{vac.id}} </a>
+      <hr align="center" color="#fff" size="3" />
+      {% endfor %}
+  {% else %}
+      Вакансий не найдено
+  {% endif %}
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
